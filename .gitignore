@@ -1,0 +1,45 @@
+# Flutter
+.dart_tool/
+.packages
+build/
+*.iml
+.idea/
+.metadata
+*.lock
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+*.apk
+*.aab
+local.properties
+android/key.properties
+keystore/*.jks
+
+# iOS
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+
+# Dart
+.dart_tool/
+.pub-cache/
+.packages
+pubspec.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Graphify
+graphify-out/
+
+# Dist
+dist/

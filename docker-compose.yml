@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  deps:
+    build:
+      context: .
+      target: deps
+    image: riso-deps
+    volumes:
+      - pub-cache:/root/.pub-cache
+    profiles: ["never"]
+
+  android-debug:
+    build:
+      context: .
+      target: debug
+    image: riso-debug
+    volumes:
+      - ./dist:/app/dist
+      - pub-cache:/root/.pub-cache
+
+  android-release:
+    build:
+      context: .
+      target: release
+    image: riso-release
+    volumes:
+      - ./dist:/app/dist
+      - pub-cache:/root/.pub-cache
+      - ./keystore:/keystore:ro
+    environment:
+      - KEYSTORE_PATH=${KEYSTORE_PATH:-/keystore/upload-keystore.jks}
+      - KEYSTORE_PASSWORD=${KEYSTORE_PASSWORD:-}
+      - KEY_ALIAS=${KEY_ALIAS:-upload}
+      - KEY_PASSWORD=${KEY_PASSWORD:-}
+
+volumes:
+  pub-cache:
